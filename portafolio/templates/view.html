@@ -1,0 +1,74 @@
+{% extends 'layout.html' %} {% block content %} {% load static %}
+
+<header class="d-flex p-3 mb-2 bg-black">
+  <div class="col-sd-4"></div>
+  <img
+    src="{% static 'portfolio_images/code.jpg' %}"
+    class="img-fluid"
+    alt=""
+  />
+
+  <div class="col-sd-8 ml-4">
+    <h1>Somos<strong> Code Crafters</strong></h1>
+    <p>
+      Code Crafters es un grupo de desarrolladores apasionados por la tecnología
+      y la creación de soluciones innovadoras. Con un enfoque en la colaboración
+      y la construcción de relaciones sólidas con sus clientes, este grupo ha
+      ganado una reputación por producir productos de alta calidad y por brindar
+      un servicio excepcional. Con una amplia gama de habilidades y
+      experiencias, Code Crafters está comprometido a ayudar a sus clientes a
+      alcanzar sus objetivos y a impulsar su éxito en el mundo digital.
+    </p>
+
+    <a
+      href="{% static 'portfolio_images/CV.pdf' %}"
+      class="btn btn-danger btn-lg rounded-0 my-3"
+      target="_blank"
+    >
+      Descargar CV
+    </a>
+  </div>
+</header>
+
+<!--Seccion de portafolio-->
+
+<h3>Nuestros proyectos</h3>
+<p>
+  A continuacion encontraras algunos de nuestros proyectos y su respectivo
+  codigo en github
+</p>
+
+<div class="text-justify">
+<div class="container">
+    <div class="row">
+      {% for project in projects %}
+
+        <div class="col-md-4 p-4">
+            <div class="card card-project bg-black" >
+              <img src="{{project.imagen.url}}" class="card-img-top" />
+          
+              <div class="card-body">
+          
+                <div class="text-center">
+                    <h2>{{ project.titulo }}</h2>
+                </div>
+                <p>{{ project.descripcion }}</p>
+          
+                {% if project.url %}
+                <div class="text-center">
+                    <a href="{{project.url}}" class="btn btn-light rounded-2 btn-sm " target="__blank" rel="noreferrer">
+                        <strong>Visita el proyecto</strong>
+                    </a>
+                </div>
+                
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+</div>
